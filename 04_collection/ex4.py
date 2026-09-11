@@ -118,6 +118,8 @@ print(f"{day}요일")
 # 4️⃣ 가장 높은 점수와 가장 낮은 점수 출력하기
 scores = (90, 85, 78, 92, 88, 76)
 
+result = sorted(scores)
+print(f"max 점수: {result[-1]}점, min 점수: {result[0]}점")
 
 # ✅ max 점수: 92점, min 점수: 76점
 print(f"max 점수: {max(scores)}점, min 점수: {min(scores)}점")
@@ -138,5 +140,18 @@ result = tuple(zip(a, b, c))
 print(result)
 # 총 재고 금액 출력
 # ✅ 총액: 21,000원
+# total = sum(price * num for _, price, num in stocks) 공간 복잡도 낮음
+# total = sum([price * num for _, price, num in stocks]) 공간 복잡도 높음
+
 a = sum(tuple(i[1] * i[2] for i in stocks))
 print(f"총액: {a:,}원")
+# print(f"총액: {total:,}원")
+
+stocks = (
+    ("사과", "바나나", "체리"),
+    (1000, 2000, 5000),
+    (5, 3, 2),
+)
+
+total = sum((money * k for fruit, money, k in zip(*stocks)))
+print(total)
